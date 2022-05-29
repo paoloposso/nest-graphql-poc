@@ -1,3 +1,7 @@
+import { Author } from "./models/authors.model";
+
 export class AuthorsService {
-    findOneById(id: number) {}
+    public findOneById(id: number): Author {
+        return null;
+    }
 }
