@@ -18,6 +18,6 @@ export class AuthorsResolver {
   @ResolveField()
   async getPosts(@Parent() author: Author) {
     const { id } = author;
-    return this.postsService.findAll({ authorId: id });
+    return this.postsService.findAll(id);
   }
 }

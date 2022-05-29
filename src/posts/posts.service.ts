@@ -1,3 +1,3 @@
 export class PostsService {
-    findAll(obj: any) {}
+    findAll(authorId: number) {}
 }
