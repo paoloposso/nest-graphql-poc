@@ -4,7 +4,7 @@ import { Author } from "./models/authors.model";
 import { Post } from "./models/posts.model";
 import { PostsService } from "./posts.service";
 
-@Resolver(of => Author)
+@Resolver(_ => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService,
@@ -17,7 +17,7 @@ export class AuthorsResolver {
   }
 
   @ResolveField('posts', _ => [Post])
-  async getPosts(@Parent() author: Author): Promise<[Post]> {
+  async getPosts(@Parent() author: Author): Promise<Array<Post>> {
     const { id } = author;
     return this.postsService.findAll(id);
   }
