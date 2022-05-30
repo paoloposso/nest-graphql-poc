@@ -11,13 +11,13 @@ export class AuthorsResolver {
     private postsService: PostsService,
   ) {}
 
-  @Query(returns => Author)
-  async getAuthor(@Args('id', { type: () => Int }) id: number): Promise<Author> {
+  @Query(returns => Author, { name: 'author' })
+  async getAuthor(@Args('id', { type: () => Int }) id: number) {
     return this.authorsService.findOneById(id);
   }
 
-  @ResolveField(returns => Post)
-  async getPosts(@Parent() author: Author) : Promise<Post[]> {
+  @ResolveField('posts', returns => [Post])
+  async getPosts(@Parent() author: Author) {
     const { id } = author;
     return this.postsService.findAll(id);
   }

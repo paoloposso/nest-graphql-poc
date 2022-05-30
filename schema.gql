@@ -15,9 +15,8 @@ type Author {
   firstName: String
   lastName: String
   posts: [Post!]!
-  getPosts: Post!
 }
 
 type Query {
-  getAuthor(id: Int!): Author!
+  author(id: Int!): Author!
 }
