@@ -9,5 +9,5 @@ class GetAuthorArgs extends PaginationArgs {
 
   @Field({ defaultValue: '' })
   @MinLength(3)
-  lastName: string;
+  lastNamex: string;
 }

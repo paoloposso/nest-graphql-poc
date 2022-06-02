@@ -17,11 +17,6 @@ export class AuthorsService {
             firstName: 'Thayna',
             lastName: 'Santos',
         } as Author);
-        this.authors.push({ 
-            id: 3, 
-            firstName: 'Wilson',
-            lastName: 'Silva',
-        } as Author);
     }
 
     public async findOneById(id: number): Promise<Author> {
