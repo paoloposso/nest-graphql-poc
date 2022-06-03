@@ -16,4 +16,8 @@ export class PostsService {
             return result.posts;
         return [];
     }
+
+    public async upvoteById(id: number) {
+        return { title: 'asdsdsa1', id } as Post;
+    }
 }

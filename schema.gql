@@ -20,3 +20,11 @@ type Author {
 type Query {
   author(id: Int!): Author!
 }
+
+type Mutation {
+  upvotePost(input: UpvotePostInput!): Post!
+}
+
+input UpvotePostInput {
+  postId: Float!
+}
