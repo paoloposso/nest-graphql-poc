@@ -1,5 +1,4 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, ResolveProperty, Resolver } from "@nestjs/graphql";
-import { title } from "process";
 import { AuthorsService } from "./authors.service";
 import { UpvotePostInput } from "./inputs/upvote-post.input";
 import { Author } from "./models/authors.model";
