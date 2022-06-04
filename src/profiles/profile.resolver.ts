@@ -8,7 +8,7 @@ export class ProfileResolver {
 
   @Query(returns => Profile, { name: 'profile' })
   async getProfile(@Args('id', { type: () => Int }) id: string) {
-    return await this.service.getProfile(id);
+    return await this.service.getProfileById(id);
   }
 
   // @ResolveField('posts', returns => [Post])
