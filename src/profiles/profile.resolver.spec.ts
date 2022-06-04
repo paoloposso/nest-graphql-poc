@@ -1,5 +1,5 @@
 import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
-import { CreateProfileInput } from "./dto/create-profile.input";
+import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";

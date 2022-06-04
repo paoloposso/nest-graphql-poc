@@ -1,4 +1,4 @@
-import { CreateProfileInput } from "./dto/create-profile.input";
+import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 
 export class ProfileService {
