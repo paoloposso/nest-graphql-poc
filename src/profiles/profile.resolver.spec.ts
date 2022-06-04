@@ -1,4 +1,5 @@
 import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
+import { CreateProfileInput } from "./dto/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
@@ -21,6 +22,23 @@ describe('ProfileResolver', () => {
             });
 
             expect((await resolver.getProfile('1')).email).toEqual('pvictorsys@gmail.com');
+        });
+    });
+
+    describe('getProfileById', () => {
+        it ('should return a profile', async () => {
+            jest.spyOn(service, 'createProfile').mockImplementation(() => {
+                return new Promise((resolve, reject) => {
+                    resolve('id123');
+                });
+            });
+
+            let input = new CreateProfileInput();
+            input.email = 'test@test.com';
+
+            let respose = await resolver.createProfile(input);
+
+            expect(respose.length).toBeGreaterThan(1);
         });
     });
 });
