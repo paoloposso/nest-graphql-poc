@@ -1,6 +1,8 @@
 import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
+import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
+import { ProfileDocument } from "./mongo/profile.schema";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
 
@@ -9,7 +11,7 @@ describe('ProfileResolver', () => {
     let service: ProfileService;
 
     beforeEach(() => {
-        service = new ProfileService();
+        service = new ProfileService({} as Model<ProfileDocument>);
         resolver = new ProfileResolver(service);
     });
 
@@ -27,7 +29,7 @@ describe('ProfileResolver', () => {
 
     describe('getProfileById', () => {
         it ('should return a profile', async () => {
-            jest.spyOn(service, 'createProfile').mockImplementation(() => {
+            jest.spyOn(service, 'create').mockImplementation(() => {
                 return new Promise((resolve, reject) => {
                     resolve('id123');
                 });
