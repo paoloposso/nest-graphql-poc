@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Connection, Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";

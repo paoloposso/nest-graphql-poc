@@ -1,19 +1,21 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { ProfileDbSchema, ProfileDocument, ProfileSchema } from "./mongo/profile.schema";
+import { ProfileDb, ProfileSchema } from "./mongo/profile.schema";
+import { ProfileRepository } from "./profile.repository";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
 
 @Module({
     imports: [
         MongooseModule.forFeature([{
-            name: ProfileDbSchema.name,
+            name: ProfileDb.name,
             schema: ProfileSchema
         }])
     ],
     providers: [
         ProfileResolver,
-        ProfileService
+        ProfileService,
+        ProfileRepository
     ],
 })
 export class ProfileModule {}

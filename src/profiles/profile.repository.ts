@@ -1,12 +1,12 @@
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
+import { InjectConnection, InjectModel } from "@nestjs/mongoose";
+import { Connection, Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
-import { ProfileDbSchema, ProfileDocument } from "./mongo/profile.schema";
+import { ProfileDb, ProfileDocument } from "./mongo/profile.schema";
 
 export class ProfileRepository {
     constructor(
-        @InjectModel(ProfileDbSchema.name) 
+        @InjectModel(ProfileDb.name) 
         private profileModel: Model<ProfileDocument>
     ) {}
 

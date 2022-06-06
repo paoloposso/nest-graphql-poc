@@ -1,6 +1,6 @@
-import { ArgsType, Field } from "@nestjs/graphql";
+import { ArgsType, Field, InputType } from "@nestjs/graphql";
 
-@ArgsType()
+@InputType()
 export class CreateProfileInput  {
     @Field((type) => String, {nullable: false})
     email: string;

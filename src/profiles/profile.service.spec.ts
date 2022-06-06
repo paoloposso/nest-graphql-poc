@@ -1,12 +1,8 @@
-import { assert } from "console";
-import exp from "constants";
-import { Model } from "mongoose";
-import { type } from "os";
+import { Connection, Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";
 import { ProfileRepository } from "./profile.repository";
-import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
 
 describe('ProfileService', () => {
