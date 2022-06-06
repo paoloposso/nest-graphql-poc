@@ -9,9 +9,11 @@ import { ProfileService } from "./profile.service";
 describe('ProfileResolver', () => {
     let resolver: ProfileResolver;
     let service: ProfileService;
+    let repository: ProfileRepository;
 
     beforeEach(() => {
-        service = new ProfileService(new ProfileRepository({} as Model<ProfileDocument>));
+        repository = new ProfileRepository({} as Model<ProfileDocument, {}>);
+        service = new ProfileService(repository);
         resolver = new ProfileResolver(service);
     });
 
