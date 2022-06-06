@@ -1,4 +1,4 @@
-import { Args, Int, Mutation, Parent, Query, ResolveField, ResolveProperty, Resolver } from "@nestjs/graphql";
+import { Args, Int, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileService } from "./profile.service";
@@ -14,15 +14,6 @@ export class ProfileResolver {
 
   @Mutation(returns => String)
   async createProfile(@Args({ name: 'input', type: () => CreateProfileInput }) input: CreateProfileInput) {
-    let errors: string[] = [];
-
-    if (!input.email || input.email.length === 0) {
-        errors.push('Email is required');
-    }
-    if (errors.length > 0) {
-        throw new Error(errors.join(';'));
-    }
-
     return this.service.create(input);
   }
 }

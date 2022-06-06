@@ -2,6 +2,7 @@ import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";
+import { ProfileRepository } from "./profile.repository";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
 
@@ -10,7 +11,7 @@ describe('ProfileResolver', () => {
     let service: ProfileService;
 
     beforeEach(() => {
-        service = new ProfileService({} as Model<ProfileDocument>);
+        service = new ProfileService(new ProfileRepository({} as Model<ProfileDocument>));
         resolver = new ProfileResolver(service);
     });
 
@@ -26,7 +27,7 @@ describe('ProfileResolver', () => {
         });
     });
 
-    describe('getProfileById', () => {
+    describe('createProfile', () => {
         it ('should return id for new profile', async () => {
             jest.spyOn(service, 'create').mockImplementation(() => {
                 return new Promise((resolve, _reject) => {
