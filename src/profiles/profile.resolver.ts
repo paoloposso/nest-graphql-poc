@@ -14,6 +14,15 @@ export class ProfileResolver {
 
   @Mutation(returns => String)
   async createProfile(@Args({ name: 'input', type: () => CreateProfileInput }) input: CreateProfileInput) {
+    let errors: string[] = [];
+
+    if (!input.email || input.email.length === 0) {
+        errors.push('Email is required');
+    }
+    if (errors.length > 0) {
+        throw new Error(errors.join(';'));
+    }
+
     return this.service.create(input);
   }
 }
