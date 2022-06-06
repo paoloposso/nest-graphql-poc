@@ -13,20 +13,14 @@ export class ProfileService {
     ) {}
 
     public async getProfileById(id: string): Promise<Profile> {
-        return new Profile({id, email: 'pvictorsys@gmail.com' });
+        let result: Profile;
+        let document = await this.profileModel.findById(id).exec();
+        Object.assign(result, document);
+        return result;
     }
 
     public async create(input: CreateProfileInput): Promise<string> {
         const model = new this.profileModel(input);
-        let errors: string[] = [];
-
-        if (!input.email || input.email.length === 0) {
-            errors.push('Email is required');
-        }
-
-        if (errors.length > 0) {
-            throw new Error(errors.join(';'));
-        }
 
         const result = model.save();
         return (await result).id;

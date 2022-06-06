@@ -1,4 +1,3 @@
-import { ProvidedRequiredArgumentsOnDirectivesRule } from "graphql/validation/rules/ProvidedRequiredArgumentsRule";
 import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
@@ -18,7 +17,7 @@ describe('ProfileResolver', () => {
     describe('getProfileById', () => {
         it ('should return a profile', async () => {
             jest.spyOn(service, 'getProfileById').mockImplementation(() => {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve, _reject) => {
                     resolve(new Profile({email: 'pvictorsys@gmail.com'}));
                 });
             });
@@ -28,9 +27,9 @@ describe('ProfileResolver', () => {
     });
 
     describe('getProfileById', () => {
-        it ('should return a profile', async () => {
+        it ('should return id for new profile', async () => {
             jest.spyOn(service, 'create').mockImplementation(() => {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve, _reject) => {
                     resolve('id123');
                 });
             });
