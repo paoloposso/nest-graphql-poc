@@ -5,6 +5,7 @@ import { AuthorsModule } from './authors/authors.module';
 import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { ProfileModule } from './profiles/profile.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ProfileRepository } from './profiles/profile.repository';
 
 @Module({
   imports: [
@@ -25,5 +26,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       },
     }),
   ],
+  providers: [
+  ]
 })
 export class AppModule {}

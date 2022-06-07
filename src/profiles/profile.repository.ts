@@ -6,8 +6,7 @@ import { ProfileDb, ProfileDocument } from "./mongo/profile.schema";
 
 export class ProfileRepository {
     constructor(
-        @InjectModel(ProfileDb.name) 
-        private profileModel: Model<ProfileDocument>
+        @InjectModel(ProfileDb.name) private profileModel: Model<ProfileDocument>
     ) {}
 
     public async getProfileById(id: string): Promise<Profile> {

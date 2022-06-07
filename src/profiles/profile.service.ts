@@ -1,11 +1,14 @@
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { Profile } from "./models/profile.model";
+import { ProfileDb, ProfileDocument } from "./mongo/profile.schema";
 import { ProfileRepository } from "./profile.repository";
 
 export class ProfileService {
 
     constructor(private repository: ProfileRepository) {}
-
+        
     public async getProfileById(id: string): Promise<Profile> {
         return this.repository.getProfileById(id);
     }
