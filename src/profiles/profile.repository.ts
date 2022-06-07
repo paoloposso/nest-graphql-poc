@@ -18,6 +18,7 @@ export class ProfileRepository {
 
     public async create(input: CreateProfileInput): Promise<string> {
         const model = new this.model(input);
-        return (await model.save()).id;
+        let result = await model.save();
+        return result._id.toString();
     }
 }

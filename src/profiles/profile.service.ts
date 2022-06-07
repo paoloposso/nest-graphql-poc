@@ -11,7 +11,7 @@ export class ProfileService {
         @InjectModel('Profile')
         private model: Model<ProfileDocument>
     ) {}
-        
+    
     public async getProfileByEmail(email: string): Promise<ProfileModel> {
         return this.repository.getProfileByEmail(email);
     }
