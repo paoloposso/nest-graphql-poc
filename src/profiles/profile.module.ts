@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { ProfileDb, ProfileSchema } from "./mongo/profile.schema";
+import { Profile, ProfileSchema } from "./mongo/profile.schema";
 import { ProfileRepository } from "./profile.repository";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
@@ -8,7 +8,7 @@ import { ProfileService } from "./profile.service";
 @Module({
     imports: [
         MongooseModule.forFeature([{
-            name: ProfileDb.name,
+            name: 'Profile',
             schema: ProfileSchema
         }])
     ],

@@ -1,11 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ProfileDocument = ProfileDb & Document;
+export type ProfileDocument = Profile & Document;
 
 @Schema()
-export class ProfileDb {
-    constructor(init?: Partial<ProfileDb>) {
+export class Profile {
+    constructor(init?: Partial<Profile>) {
         Object.assign(this, init);
     }
 
@@ -22,4 +22,4 @@ export class ProfileDb {
     registered: Date;
 }
 
-export const ProfileSchema = SchemaFactory.createForClass(ProfileDb);
+export const ProfileSchema = SchemaFactory.createForClass(Profile);

@@ -1,16 +1,19 @@
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
-import { Profile } from "./models/profile.model";
-import { ProfileDb, ProfileDocument } from "./mongo/profile.schema";
+import { ProfileModel } from "./models/profile.model";
 import { ProfileRepository } from "./profile.repository";
+import { ProfileDocument } from "./mongo/profile.schema";
 
 export class ProfileService {
 
-    constructor(private repository: ProfileRepository) {}
+    constructor(private repository: ProfileRepository,
+        @InjectModel('Profile')
+        private model: Model<ProfileDocument>
+    ) {}
         
-    public async getProfileById(id: string): Promise<Profile> {
-        return this.repository.getProfileById(id);
+    public async getProfileByEmail(email: string): Promise<ProfileModel> {
+        return this.repository.getProfileByEmail(email);
     }
 
     public async create(input: CreateProfileInput): Promise<string> {
@@ -22,7 +25,6 @@ export class ProfileService {
         if (errors.length > 0) {
             throw new Error(errors.join(';'));
         }
-        
         return this.repository.create(input);
     }
 }

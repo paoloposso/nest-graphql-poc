@@ -1,9 +1,9 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class Profile {
+export class ProfileModel {
 
-    constructor(init?: Partial<Profile>) {
+    constructor(init?: Partial<ProfileModel>) {
         Object.assign(this, init);
     }
 

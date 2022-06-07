@@ -1,24 +1,23 @@
-import { InjectConnection, InjectModel } from "@nestjs/mongoose";
-import { Connection, Model } from "mongoose";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
-import { Profile } from "./models/profile.model";
-import { ProfileDb, ProfileDocument } from "./mongo/profile.schema";
+import { ProfileModel } from "./models/profile.model";
+import { Profile, ProfileDocument } from "./mongo/profile.schema";
 
 export class ProfileRepository {
+
     constructor(
-        @InjectModel(ProfileDb.name) private profileModel: Model<ProfileDocument>
-    ) {}
+        @InjectModel('Profile')
+        private model: Model<ProfileDocument>) {}
 
-    public async getProfileById(id: string): Promise<Profile> {
-        let result: Profile;
-        
-        Object.assign(result, await this.profileModel.findById(id).exec());
-
+    public async getProfileByEmail(email: string): Promise<ProfileModel> {
+        let result: ProfileModel;
+        Object.assign(result, await this.model.findOne({ email }).exec());
         return result;
     }
 
     public async create(input: CreateProfileInput): Promise<string> {
-        const model = new this.profileModel(input);
+        const model = new this.model(input);
         return (await model.save()).id;
     }
 }

@@ -1,6 +1,6 @@
 import { Connection, Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
-import { Profile } from "./models/profile.model";
+import { ProfileModel } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";
 import { ProfileRepository } from "./profile.repository";
 import { ProfileService } from "./profile.service";
@@ -11,18 +11,18 @@ describe('ProfileService', () => {
 
     beforeAll(() => {
         repository = new ProfileRepository({} as Model<ProfileDocument, {}, {}>);
-        service = new ProfileService(repository);
+        service = new ProfileService(repository, {} as Model<ProfileDocument, {}>);
     });
 
     describe('getProfileById', () => {
         it ('should return a profile', async () => {
-            jest.spyOn(repository, 'getProfileById').mockImplementation(() => {
+            jest.spyOn(repository, 'getProfileByEmail').mockImplementation(() => {
                 return new Promise((resolve, _reject) => {
-                    resolve(new Profile({email: 'pvictorsys@gmail.com'}));
+                    resolve(new ProfileModel({email: 'pvictorsys@gmail.com'}));
                 });
             });
 
-            expect((await service.getProfileById('1')).email).toEqual('pvictorsys@gmail.com');
+            expect((await service.getProfileByEmail('pvictorsys@gmail.com')).email).toEqual('pvictorsys@gmail.com');
         });
     });
 

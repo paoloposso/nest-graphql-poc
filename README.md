@@ -1,10 +1,9 @@
 # Nest - GraphQL - POC
 - Nest 
 - GraphQL
+- MongoDB
 
 ## TODO
-- Add database (probably Redis)
 - Add healthcheck
-- Create env vars
 - Create docker-compose
 - Run on cloud

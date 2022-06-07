@@ -17,7 +17,7 @@ type Author {
   posts: [Post!]!
 }
 
-type Profile {
+type ProfileModel {
   id: ID!
   email: String!
   name: String
@@ -31,7 +31,7 @@ scalar DateTime
 
 type Query {
   author(id: Int!): Author!
-  profile(id: Int!): Profile!
+  profile(id: String!): ProfileModel!
 }
 
 type Mutation {
