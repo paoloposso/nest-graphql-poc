@@ -11,7 +11,7 @@ describe('ProfileService', () => {
 
     beforeAll(() => {
         repository = new ProfileRepository({} as Model<ProfileDocument, {}, {}>);
-        service = new ProfileService(repository, {} as Model<ProfileDocument, {}>);
+        service = new ProfileService(repository);
     });
 
     describe('getProfileById', () => {

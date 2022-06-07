@@ -1,16 +1,12 @@
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { ProfileModel } from "./models/profile.model";
 import { ProfileRepository } from "./profile.repository";
-import { ProfileDocument } from "./mongo/profile.schema";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class ProfileService {
 
-    constructor(private repository: ProfileRepository,
-        @InjectModel('Profile')
-        private model: Model<ProfileDocument>
-    ) {}
+    constructor(private repository: ProfileRepository) {}
     
     public async getProfileByEmail(email: string): Promise<ProfileModel> {
         return this.repository.getProfileByEmail(email);

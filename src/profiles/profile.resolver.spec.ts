@@ -11,7 +11,7 @@ describe('ProfileResolver', () => {
     let service: ProfileService;
 
     beforeEach(() => {
-        service = new ProfileService(new ProfileRepository({} as Model<ProfileDocument, {}>), {} as Model<ProfileDocument, {}>);
+        service = new ProfileService(new ProfileRepository({} as Model<ProfileDocument, {}>));
         resolver = new ProfileResolver(service);
     });
 

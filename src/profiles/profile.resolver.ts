@@ -1,4 +1,4 @@
-import { Args, Int, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { ProfileModel } from "./models/profile.model";
 import { ProfileService } from "./profile.service";

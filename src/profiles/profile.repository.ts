@@ -1,9 +1,11 @@
+import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { ProfileModel } from "./models/profile.model";
 import { Profile, ProfileDocument } from "./mongo/profile.schema";
 
+@Injectable()
 export class ProfileRepository {
 
     constructor(
