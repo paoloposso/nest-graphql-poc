@@ -15,10 +15,16 @@ export class Profile {
     @Prop({required: true})
     email: string;
 
-    @Prop({ nullable: true })
+    @Prop({ required: true })
     name: string;
 
-    @Prop({ nullable: true })
+    @Prop({ required: false })
+    styles: string[];
+
+    @Prop({ required: false })
+    instruments: string[];
+
+    @Prop({ required: true })
     registered: Date;
 }
 
