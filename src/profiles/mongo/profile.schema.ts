@@ -12,7 +12,7 @@ export class Profile {
     @Prop({ type: Types.ObjectId })
     id: string;
 
-    @Prop({required: true})
+    @Prop({required: true, unique: true, index: true})
     email: string;
 
     @Prop({ required: true })

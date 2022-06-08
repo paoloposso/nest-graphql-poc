@@ -12,15 +12,25 @@ export class ProfileService {
         return this.repository.getProfileByEmail(email);
     }
 
-    public async create(input: CreateProfileInput): Promise<string> {
+    public async create(profile: ProfileModel): Promise<string> {
         let errors: string[] = [];
 
-        if (!input.email || input.email.length === 0) {
+        this.validateCreateProfileInput(profile, errors);
+
+        profile.registered = new Date();
+
+        return this.repository.create(profile);
+    }
+
+    private validateCreateProfileInput(profile: ProfileModel, errors: string[]) {
+        if (!profile.email || profile.email.length === 0) {
             errors.push('Email is required');
+        }
+        if (!profile.name || profile.name.length === 0) {
+            errors.push('Name is required');
         }
         if (errors.length > 0) {
             throw new Error(errors.join(';'));
         }
-        return this.repository.create(input);
     }
 }

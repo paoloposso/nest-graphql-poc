@@ -14,6 +14,6 @@ export class ProfileResolver {
 
   @Mutation(returns => String)
   async createProfile(@Args({ name: 'input', type: () => CreateProfileInput }) input: CreateProfileInput) {
-    return this.service.create(input);
+    return this.service.create(new ProfileModel(input));
   }
 }

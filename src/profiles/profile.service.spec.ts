@@ -34,12 +34,34 @@ describe('ProfileService', () => {
                 });
             });
 
-            let input = new CreateProfileInput();
-            input.email = 'test@test.com';
+            let profile = new ProfileModel();
+            profile.email = 'test@test.com';
+            profile.name = 'test';
 
-            let respose = await service.create(input);
+            let respose = await service.create(profile);
 
             expect(respose.length).toBeGreaterThan(1);
+        });
+
+        it ('should fail when email is empty', async () => {
+            jest.spyOn(repository, 'create').mockImplementation(() => {
+                return new Promise((resolve, _reject) => {
+                    resolve('id123');
+                });
+            });
+
+            let profile = new ProfileModel();
+            profile.email = 'pvictorsys@gmail.com';
+            profile.name = '';
+
+            try {
+
+                await service.create(profile);
+                fail('should have validated blank name');
+            } catch (e) {
+                let err = e as Error;
+                expect(err.message.toLowerCase().includes('name')).toBeTruthy();
+            }
         });
 
         it ('should fail when email is blank', async () => {
@@ -49,11 +71,11 @@ describe('ProfileService', () => {
                 });
             });
 
-            let input = new CreateProfileInput();
-            input.email = '';
+            let profile = new ProfileModel();
+            profile.email = '';
 
             try {
-                let respose = await service.create(input);
+                await service.create(profile);
                 fail('should have validated email');
             } catch (e) {
                 let message = ((e as Error).message);

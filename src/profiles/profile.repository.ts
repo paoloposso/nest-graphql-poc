@@ -18,8 +18,8 @@ export class ProfileRepository {
         return result;
     }
 
-    public async create(input: CreateProfileInput): Promise<string> {
-        const model = new this.model(input);
+    public async create(profile: ProfileModel): Promise<string> {
+        const model = new this.model(profile);
         let result = await model.save();
         return result._id.toString();
     }
