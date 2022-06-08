@@ -23,7 +23,7 @@ describe('ProfileResolver', () => {
                 });
             });
 
-            expect((await resolver.getProfile('1')).email).toEqual('pvictorsys@gmail.com');
+            expect((await resolver.getProfileByEmail('1')).email).toEqual('pvictorsys@gmail.com');
         });
     });
 

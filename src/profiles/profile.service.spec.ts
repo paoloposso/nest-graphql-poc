@@ -14,15 +14,27 @@ describe('ProfileService', () => {
         service = new ProfileService(repository);
     });
 
-    describe('getProfileById', () => {
+    describe('getProfileByEmail', () => {
         it ('should return a profile', async () => {
-            jest.spyOn(repository, 'getProfileByEmail').mockImplementation(() => {
+            jest.spyOn(repository, 'getByEmail').mockImplementation(() => {
                 return new Promise((resolve, _reject) => {
                     resolve(new ProfileModel({email: 'pvictorsys@gmail.com'}));
                 });
             });
 
             expect((await service.getProfileByEmail('pvictorsys@gmail.com')).email).toEqual('pvictorsys@gmail.com');
+        });
+    });
+
+    describe('getProfileByEmail', () => {
+        it ('should return a profile', async () => {
+            jest.spyOn(repository, 'getById').mockImplementation(() => {
+                return new Promise((resolve, _reject) => {
+                    resolve(new ProfileModel({email: 'pvictorsys@gmail.com'}));
+                });
+            });
+
+            expect((await service.getProfileById('111Bhjsyd6&85')).email).toEqual('pvictorsys@gmail.com');
         });
     });
 

@@ -12,9 +12,15 @@ export class ProfileRepository {
         @InjectModel('Profile')
         private model: Model<ProfileDocument>) {}
 
-    public async getProfileByEmail(email: string): Promise<ProfileModel> {
+    public async getByEmail(email: string): Promise<ProfileModel> {
         let result: ProfileModel;
         Object.assign(result, await this.model.findOne({ email }).exec());
+        return result;
+    }
+
+    public async getById(id: string): Promise<ProfileModel> {
+        let result: ProfileModel;
+        Object.assign(result, await this.model.findById(id).exec());
         return result;
     }
 

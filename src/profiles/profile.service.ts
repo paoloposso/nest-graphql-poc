@@ -9,7 +9,11 @@ export class ProfileService {
     constructor(private repository: ProfileRepository) {}
     
     public async getProfileByEmail(email: string): Promise<ProfileModel> {
-        return this.repository.getProfileByEmail(email);
+        return this.repository.getByEmail(email);
+    }
+
+    public async getProfileById(id: string): Promise<ProfileModel> {
+        return this.repository.getById(id);
     }
 
     public async create(profile: ProfileModel): Promise<string> {

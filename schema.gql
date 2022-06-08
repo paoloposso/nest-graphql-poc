@@ -31,7 +31,8 @@ scalar DateTime
 
 type Query {
   author(id: Int!): Author!
-  profile(id: String!): ProfileModel!
+  getProfileByEmail(email: String!): ProfileModel!
+  getProfileById(id: String!): ProfileModel!
 }
 
 type Mutation {

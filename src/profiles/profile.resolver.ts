@@ -7,9 +7,14 @@ import { ProfileService } from "./profile.service";
 export class ProfileResolver {
   constructor(private service: ProfileService) {}
 
-  @Query(returns => ProfileModel, { name: 'profile' })
-  async getProfile(@Args('id', { type: () => String }) email: string) {
-    return await this.service.getProfileByEmail(email);
+  @Query(returns => ProfileModel, { name: 'getProfileByEmail' })
+  getProfileByEmail(@Args('email', { type: () => String }) email: string) {
+    return this.service.getProfileByEmail(email);
+  }
+
+  @Query(returns => ProfileModel, { name: 'getProfileById' })
+  getProfileById(@Args('id', { type: () => String }) email: string) {
+    return this.service.getProfileById(email);
   }
 
   @Mutation(returns => String)
