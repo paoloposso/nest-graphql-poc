@@ -18,10 +18,10 @@ export class Profile {
     @Prop({ required: true })
     name: string;
 
-    @Prop({ required: false })
+    @Prop({ index: true, required: false })
     styles: string[];
 
-    @Prop({ required: false })
+    @Prop({ index: true, required: false })
     instruments: string[];
 
     @Prop({ required: true })
