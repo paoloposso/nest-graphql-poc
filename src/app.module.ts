@@ -15,6 +15,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,
+      playground: true,
       buildSchemaOptions: {
         directives: [
           new GraphQLDirective({
