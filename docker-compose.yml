@@ -2,17 +2,13 @@ version: '3.8'
 services:
   mongodb:
     image: mongo
-    env_file: ./.env
-    volumes:
-      - /Users/paoloposso/data
     ports:
       - 27000:27017
   app:
     depends_on:
       - mongodb
     build: .
-    env_file: ./.env
     environment:
       - MONGO_URI=mongodb://mongodb:27017/jam
     ports:
-      - 3300:$NODE_PORT
+      - 3300:3000
