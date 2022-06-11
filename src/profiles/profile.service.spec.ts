@@ -26,7 +26,7 @@ describe('ProfileService', () => {
         });
     });
 
-    describe('getProfileByEmail', () => {
+    describe('getProfileById', () => {
         it ('should return a profile', async () => {
             jest.spyOn(repository, 'getById').mockImplementation(() => {
                 return new Promise((resolve, _reject) => {
