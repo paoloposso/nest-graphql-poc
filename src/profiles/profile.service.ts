@@ -1,5 +1,5 @@
 import { ProfileModel } from "./models/profile.model";
-import { ProfileRepository } from "./profile.repository";
+import { ProfileRepository } from "./mongo/profile.repository";
 import { Injectable } from "@nestjs/common";
 import * as moment from "moment";
 
@@ -21,13 +21,13 @@ export class ProfileService {
 
         this.validateCreateProfileInput(profile, errors);
 
-        profile.registered = this.getUtcDate(profile);
+        profile.registered = this.getUtcDate();
 
         return this.repository.create(profile);
     }
 
-    private getUtcDate(profile: ProfileModel) : Date {
-        return new Date();
+    getUtcDate() : Date {
+        return moment.utc().toDate();
     }
 
     private validateCreateProfileInput(profile: ProfileModel, errors: string[]) {

@@ -1,8 +1,8 @@
-import { Connection, Model } from "mongoose";
-import { CreateProfileInput } from "./inputs/create-profile.input";
+import * as moment from "moment";
+import { Model } from "mongoose";
 import { ProfileModel } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";
-import { ProfileRepository } from "./profile.repository";
+import { ProfileRepository } from "./mongo/profile.repository";
 import { ProfileService } from "./profile.service";
 
 describe('ProfileService', () => {
@@ -93,6 +93,10 @@ describe('ProfileService', () => {
                 let message = ((e as Error).message);
                 expect(message.toLowerCase().includes('email is required')).toBeTruthy();
             }
+        });
+
+        it ('should get utc date', () => {
+            let d = moment.utc().toDate();
         });
     });
 });
