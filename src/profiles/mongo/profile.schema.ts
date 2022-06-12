@@ -19,9 +19,6 @@ export class Profile {
     name: string;
 
     @Prop({ index: true, required: false })
-    styles: string[];
-
-    @Prop({ index: true, required: false })
     instruments: string[];
 
     @Prop({ required: true })
