@@ -1,8 +1,8 @@
-import { Connection, Model } from "mongoose";
+import { Model } from "mongoose";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { ProfileModel } from "./models/profile.model";
 import { ProfileDocument } from "./mongo/profile.schema";
-import { ProfileRepository } from "./profile.repository";
+import { ProfileRepository } from "./mongo/profile.repository";
 import { ProfileResolver } from "./profile.resolver";
 import { ProfileService } from "./profile.service";
 

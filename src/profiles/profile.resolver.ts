@@ -5,6 +5,7 @@ import { ProfileService } from "./profile.service";
 
 @Resolver(of => ProfileModel)
 export class ProfileResolver {
+  
   constructor(private service: ProfileService) {}
 
   @Query(returns => ProfileModel, { name: 'getProfileByEmail' })
