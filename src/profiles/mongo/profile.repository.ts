@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { CreateProfileInput } from "../inputs/create-profile.input";
 import { ProfileModel } from "../models/profile.model";
-import { Profile, ProfileDocument } from "./profile.schema";
+import { ProfileDocument } from "./profile.schema";
 
 @Injectable()
 export class ProfileRepository {
@@ -28,5 +27,11 @@ export class ProfileRepository {
         const model = new this.model(profile);
         let result = await model.save();
         return result._id.toString();
+    }
+
+    public async addInstruments(id: string, instruments: string[]) {
+        let profile = await this.model.findById(id);
+        profile.instruments.push(...instruments);
+        profile.save();
     }
 }

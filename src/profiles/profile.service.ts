@@ -26,6 +26,10 @@ export class ProfileService {
         return this.repository.create(profile);
     }
 
+    public async addInstruments(instruments: string[], profileId: string) {
+        this.repository.addInstruments(profileId, instruments);
+    }
+
     getUtcDate() : Date {
         return moment.utc().toDate();
     }
