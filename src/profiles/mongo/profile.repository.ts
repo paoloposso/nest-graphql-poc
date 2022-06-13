@@ -29,6 +29,7 @@ export class ProfileRepository {
 
     public async addInstruments(id: string, instruments: string[]) {
         const model = await this.model.findById(id);
+        model.instruments = [];
         model.instruments.push(...instruments);
         return (await model.save())._id.toString();
     }
