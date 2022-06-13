@@ -1,4 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { AddInstrumentsInput } from "./inputs/add-instruments.input";
 import { CreateProfileInput } from "./inputs/create-profile.input";
 import { ProfileModel } from "./models/profile.model";
 import { ProfileService } from "./profile.service";
@@ -21,5 +22,10 @@ export class ProfileResolver {
   @Mutation(returns => String)
   async createProfile(@Args({ name: 'input', type: () => CreateProfileInput }) input: CreateProfileInput) {
     return this.service.create(new ProfileModel(input));
+  }
+
+  @Mutation(returns => String)
+  async addInstruments(@Args({ name: 'input', type: () => AddInstrumentsInput }) input: AddInstrumentsInput) {
+    return this.service.addInstruments(input.id, input.instruments);
   }
 }

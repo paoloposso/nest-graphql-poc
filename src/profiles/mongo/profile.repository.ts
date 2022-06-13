@@ -24,14 +24,12 @@ export class ProfileRepository {
     }
 
     public async create(profile: ProfileModel): Promise<string> {
-        const model = new this.model(profile);
-        let result = await model.save();
-        return result._id.toString();
+        return (await new this.model(profile).save())._id.toString();
     }
 
     public async addInstruments(id: string, instruments: string[]) {
-        let profile = await this.model.findById(id);
-        profile.instruments.push(...instruments);
-        profile.save();
+        const model = await this.model.findById(id);
+        model.instruments.push(...instruments);
+        return (await model.save())._id.toString();
     }
 }

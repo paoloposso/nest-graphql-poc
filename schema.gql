@@ -38,6 +38,7 @@ type Query {
 type Mutation {
   upvotePost(input: UpvotePostInput!): Post!
   createProfile(input: CreateProfileInput!): String!
+  addInstruments(input: AddInstrumentsInput!): String!
 }
 
 input UpvotePostInput {
@@ -47,4 +48,9 @@ input UpvotePostInput {
 input CreateProfileInput {
   email: String!
   name: String!
+}
+
+input AddInstrumentsInput {
+  id: String!
+  instruments: [String!]!
 }
